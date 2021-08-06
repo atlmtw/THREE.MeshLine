@@ -6,20 +6,24 @@ Object.defineProperty(exports, "__esModule", {
 Object.defineProperty(exports, "MeshLineMaterial", {
   enumerable: true,
   get: function get() {
-    return _index.MeshLineMaterial;
+    return _material.MeshLineMaterial;
   }
 });
 Object.defineProperty(exports, "MeshLine", {
   enumerable: true,
   get: function get() {
-    return _index.MeshLine;
+    return _meshline.MeshLine;
   }
 });
 Object.defineProperty(exports, "MeshLineRaycast", {
   enumerable: true,
   get: function get() {
-    return _index.MeshLineRaycast;
+    return _raycast.MeshLineRaycast;
   }
 });
 
-var _index = require("./meshline/index");
+var _material = require("./meshline/material");
+
+var _meshline = require("./meshline/meshline");
+
+var _raycast = require("./meshline/raycast");

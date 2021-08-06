@@ -1,5 +1,3 @@
-import { MeshLineMaterial } from './meshline/material';
-import { MeshLine } from './meshline/meshline';
-import { MeshLineRaycast } from './meshline/raycast';
+import { MeshLineMaterial, MeshLine, MeshLineRaycast } from './meshline/index';
 
 export { MeshLineMaterial, MeshLine, MeshLineRaycast };
