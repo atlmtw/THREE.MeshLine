@@ -1,21 +1,4 @@
-"use strict";
-
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.MeshLine = void 0;
-
-var THREE = _interopRequireWildcard(require("three"));
-
-var _raycast = require("./raycast");
-
-var _utils = require("./utils");
-
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -37,7 +20,10 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var MeshLine = /*#__PURE__*/function (_THREE$BufferGeometry) {
+import * as THREE from 'three';
+import { MeshLineRaycast } from "./raycast";
+import { memcpy } from "./utils";
+export var MeshLine = /*#__PURE__*/function (_THREE$BufferGeometry) {
   _inherits(MeshLine, _THREE$BufferGeometry);
 
   var _super = _createSuper(MeshLine);
@@ -51,7 +37,7 @@ var MeshLine = /*#__PURE__*/function (_THREE$BufferGeometry) {
     _this.type = 'MeshLine';
     _this.isMeshLine = true;
     _this.positions = [];
-    _this.raycast = _raycast.MeshLineRaycast;
+    _this.raycast = MeshLineRaycast;
     _this.previous = [];
     _this.next = [];
     _this.side = [];
@@ -304,9 +290,9 @@ var MeshLine = /*#__PURE__*/function (_THREE$BufferGeometry) {
       var next = this._attributes.next.array;
       var l = positions.length; // PREVIOUS
 
-      (0, _utils.memcpy)(positions, 0, previous, 0, l); // POSITIONS
+      memcpy(positions, 0, previous, 0, l); // POSITIONS
 
-      (0, _utils.memcpy)(positions, 6, positions, 0, l - 6);
+      memcpy(positions, 6, positions, 0, l - 6);
       positions[l - 6] = x;
       positions[l - 5] = y;
       positions[l - 4] = z;
@@ -314,7 +300,7 @@ var MeshLine = /*#__PURE__*/function (_THREE$BufferGeometry) {
       positions[l - 2] = y;
       positions[l - 1] = z; // NEXT
 
-      (0, _utils.memcpy)(positions, 6, next, 0, l - 6);
+      memcpy(positions, 6, next, 0, l - 6);
       next[l - 6] = x;
       next[l - 5] = y;
       next[l - 4] = z;
@@ -329,5 +315,3 @@ var MeshLine = /*#__PURE__*/function (_THREE$BufferGeometry) {
 
   return MeshLine;
 }(THREE.BufferGeometry);
-
-exports.MeshLine = MeshLine;

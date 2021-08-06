@@ -1,11 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.memcpy = memcpy;
-
-function memcpy(src, srcOffset, dst, dstOffset, length) {
+export function memcpy(src, srcOffset, dst, dstOffset, length) {
   var i;
   src = src.subarray || src.slice ? src : src.buffer;
   dst = dst.subarray || dst.slice ? dst : dst.buffer;
