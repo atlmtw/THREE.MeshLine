@@ -22,8 +22,8 @@ Object.defineProperty(exports, "MeshLineRaycast", {
   }
 });
 
-var _material = require("./meshline/material");
+var _material = require("./material");
 
-var _meshline = require("./meshline/meshline");
+var _meshline = require("./meshline");
 
-var _raycast = require("./meshline/raycast");
+var _raycast = require("./raycast");
